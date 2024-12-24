@@ -6,8 +6,10 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.all(MediaQuery.sizeOf(context).aspectRatio * 35.0),
+  Widget build(BuildContext context) {
+    var size35 = MediaQuery.sizeOf(context).aspectRatio * 35.0;
+    return Padding(
+        padding: EdgeInsets.only(left: size35, right: size35),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,4 +42,5 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
+  }
 }

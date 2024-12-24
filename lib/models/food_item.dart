@@ -38,4 +38,24 @@ List<FoodItem> foods = [
     imgUrl: 'https://th.bing.com/th/id/OIP.ikrB_CKJ9VbZllrLmerQVAHaHa?w=1920&h=1920&rs=1&pid=ImgDetMain',
     price: 1.99,
   ),
+  FoodItem(
+    name: 'Taco',
+    imgUrl: 'https://th.bing.com/th/id/OIP.Bt5P5jQC7xehCxxfhXH13QHaGm?rs=1&pid=ImgDetMain',
+    price: 6.99,
+  ),
+  FoodItem(
+    name: 'Wings',
+    imgUrl: 'https://th.bing.com/th/id/R.427aec5b0c05112c75119cd4f0d3fe74?rik=l%2fu0kYbSGoUdFw&pid=ImgRaw&r=0',
+    price: 8.99,
+  ),
+  FoodItem(
+    name: 'Fish',
+    imgUrl: 'https://i.pinimg.com/originals/77/64/6d/77646d93722edd490ade3ce0b38df9ff.png',
+    price: 14.99,
+  ),
+  FoodItem(
+    name: 'Pasta',
+    imgUrl: 'https://static.vecteezy.com/system/resources/previews/021/344/437/original/pasta-isolated-on-a-transparent-background-png.png',
+    price: 14.99,
+  ),
 ];
