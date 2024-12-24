@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/favorite_page.dart';
 import 'package:food_delivery/pages/home_page.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _bodyWidgets = [
     const HomePage(),
-    const Center(child: Text('Favorite')),
+    const FavoritePage(),
     const Center(child: Text('Profile')),
   ];
 
@@ -21,27 +22,46 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Foodak'),
+        title: const Text(
+          'Foodak',
+          style: TextStyle(
+            fontFamily: 'Times New Roman',
+          ),
+        ),
         foregroundColor: Colors.black,
       ),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.15),
+          padding:
+              EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.15),
           children: <Widget>[
             ListTile(
-              title: const Text('Home'),
+              title: const Text(
+                'Home',
+                style: TextStyle(
+                  fontFamily: 'Times New Roman',
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('About'),
+              title: const Text('About',
+                style: TextStyle(
+                fontFamily: 'Times New Roman',
+              ),
+            ),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Contact'),
+              title: const Text('Contact',
+                style: TextStyle(
+                  fontFamily: 'Times New Roman',
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -54,15 +74,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Home',tooltip: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favorite',
+            label: 'Favorite', tooltip: 'Favorite',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Profile', tooltip: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -19,21 +19,23 @@ class FoodGridItem extends StatelessWidget {
           children: [
             Image.network(
               foodItem.imgUrl,
-              height: MediaQuery.sizeOf(context).height * 0.12,
-              width: MediaQuery.sizeOf(context).height * 0.15,
+              width: MediaQuery.sizeOf(context).width * 0.21,
               fit: BoxFit.contain,
             ),
+            const SizedBox(height: 8.0),
             Text(
               foodItem.name,
               style: const TextStyle(
-                fontSize: 14.0,
+                fontSize: 16.0,
+                fontFamily: 'Times New Roman',
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               '\$ ${foodItem.price}',
               style: const TextStyle(
-                fontSize: 12.0,
+                fontSize: 14.0,
+                  fontFamily: 'Times New Roman',
                 fontWeight: FontWeight.w800,
                 color: Colors.deepOrange
               ),
