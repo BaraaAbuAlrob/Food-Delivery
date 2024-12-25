@@ -10,6 +10,19 @@ class FoodItem {
     required this.price,
     this.isFavorite = false,
   });
+
+  FoodItem copyWith({
+    String? name,
+    String? imgUrl,
+    double? price,
+    bool? isFavorite,
+  }) =>
+      FoodItem(
+        name: name ?? this.name,
+        imgUrl: imgUrl ?? this.imgUrl,
+        price: price ?? this.price,
+        isFavorite: isFavorite ?? this.isFavorite,
+      );
 }
 
 List<FoodItem> foods = [
@@ -18,7 +31,6 @@ List<FoodItem> foods = [
     imgUrl:
         'https://th.bing.com/th/id/OIP.5Ijx_Rto-QHZT9IHvYnqRQHaE8?w=2700&h=1800&rs=1&pid=ImgDetMain',
     price: 5.99,
-    isFavorite: true,
   ),
   FoodItem(
     name: 'Fries',
@@ -31,7 +43,6 @@ List<FoodItem> foods = [
     imgUrl:
         'https://www.pngall.com/wp-content/uploads/2016/04/Hot-Dog-PNG-File.png',
     price: 3.99,
-    isFavorite: true,
   ),
   FoodItem(
     name: 'Pizza',
@@ -50,7 +61,6 @@ List<FoodItem> foods = [
     imgUrl:
         'https://th.bing.com/th/id/OIP.ikrB_CKJ9VbZllrLmerQVAHaHa?w=1920&h=1920&rs=1&pid=ImgDetMain',
     price: 1.99,
-    isFavorite: true,
   ),
   FoodItem(
     name: 'Taco',
@@ -69,7 +79,6 @@ List<FoodItem> foods = [
     imgUrl:
         'https://i.pinimg.com/originals/77/64/6d/77646d93722edd490ade3ce0b38df9ff.png',
     price: 14.99,
-    isFavorite: true,
   ),
   FoodItem(
     name: 'Pasta',
