@@ -87,6 +87,3 @@ List<FoodItem> foods = [
     price: 14.99,
   ),
 ];
-
-List<FoodItem> favorites =
-    foods.where((foodItem) => foodItem.isFavorite == true).toList();
