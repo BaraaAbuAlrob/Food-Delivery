@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 16.0),
               ClipRRect(
                 borderRadius: BorderRadius.circular(24.0),
                 child: Image(
@@ -32,8 +33,9 @@ class HomePage extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
+                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: 15.0,
+                  childAspectRatio: 0.8,
                 ),
                 itemBuilder: (context, index) =>
                     FoodGridItem(foodIndex: index),

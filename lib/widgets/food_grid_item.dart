@@ -11,7 +11,6 @@ class FoodGridItem extends StatefulWidget {
 }
 
 class _FoodGridItemState extends State<FoodGridItem> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +23,11 @@ class _FoodGridItemState extends State<FoodGridItem> {
         child: Column(
           children: [
             Stack(
+              alignment: Alignment.topCenter,
               children: [
                 Image.network(
                   foods[widget.foodIndex].imgUrl,
-                  width: MediaQuery.sizeOf(context).width * 0.21,
+                  width: MediaQuery.sizeOf(context).height * 0.14,
                   fit: BoxFit.contain,
                 ),
                 Align(
@@ -37,15 +37,20 @@ class _FoodGridItemState extends State<FoodGridItem> {
                     width: 30.0,
                     decoration: BoxDecoration(
                       color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: InkWell(
                       onTap: () => setState(() {
-                        foods[widget.foodIndex] = foods[widget.foodIndex].copyWith(isFavorite: !foods[widget.foodIndex].isFavorite);
+                        foods[widget.foodIndex] =
+                            foods[widget.foodIndex].copyWith(
+                          isFavorite: !foods[widget.foodIndex].isFavorite,
+                        );
                       }),
                       child: Icon(
-                        foods[widget.foodIndex].isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.deepOrange,
+                        foods[widget.foodIndex].isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),
@@ -55,19 +60,15 @@ class _FoodGridItemState extends State<FoodGridItem> {
             const SizedBox(height: 8.0),
             Text(
               foods[widget.foodIndex].name,
-              style: const TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Times New Roman',
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             Text(
               '\$ ${foods[widget.foodIndex].price}',
-              style: const TextStyle(
-                  fontSize: 14.0,
-                  fontFamily: 'Times New Roman',
-                  fontWeight: FontWeight.w800,
-                  color: Colors.deepOrange),
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).primaryColor),
             ),
           ],
         ),

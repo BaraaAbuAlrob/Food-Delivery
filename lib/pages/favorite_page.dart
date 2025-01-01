@@ -22,14 +22,11 @@ class _FavoritePageState extends State<FavoritePage> {
                   'assets/images/empty_state.png',
                   width: MediaQuery.sizeOf(context).width * 0.65,
                 ),
-                const Text(
+                Text(
                   'No favorite items yet!',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontFamily: 'Times New Roman',
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                      ),
                 ),
               ],
             ),
@@ -59,19 +56,21 @@ class _FavoritePageState extends State<FavoritePage> {
                           children: [
                             Text(
                               favorites[favIndex].name,
-                              style: const TextStyle(
-                                fontSize: 16.0,
-                                fontFamily: 'Times New Roman',
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             Text(
                               '\$ ${favorites[favIndex].price}',
-                              style: const TextStyle(
-                                  fontSize: 14.0,
-                                  fontFamily: 'Times New Roman',
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.deepOrange),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context).primaryColor),
                             ),
                           ],
                         ),
@@ -81,33 +80,38 @@ class _FavoritePageState extends State<FavoritePage> {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
+                              backgroundColor: Colors.grey[100],
                               title: const Text('Remove from favorite?'),
                               content: const Text(
                                   'Are you sure you want to remove this item from favorite?'),
                               actions: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.grey[300], // Light grey for Cancel button
+                                    backgroundColor: Colors.grey[
+                                        300], // Light grey for Cancel button
                                   ),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
                                   child: const Text(
                                     'Cancel',
-                                    style: TextStyle(color: Colors.black), // Black text for visibility
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Black text for visibility
                                   ),
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.deepOrange, // Red for Remove button
+                                    backgroundColor: Theme.of(context)
+                                        .primaryColor, // Red for Remove button
                                   ),
                                   onPressed: () {
                                     final targetItem = favorites[favIndex];
                                     final foodIndex = foods.indexOf(targetItem);
                                     setState(
-                                          () {
-                                        foods[foodIndex] =
-                                            foods[foodIndex].copyWith(isFavorite: false);
+                                      () {
+                                        foods[foodIndex] = foods[foodIndex]
+                                            .copyWith(isFavorite: false);
                                         favorites.removeAt(favIndex);
                                       },
                                     );
@@ -115,16 +119,18 @@ class _FavoritePageState extends State<FavoritePage> {
                                   },
                                   child: const Text(
                                     'Remove',
-                                    style: TextStyle(color: Colors.white), // White text for contrast
+                                    style: TextStyle(
+                                        color: Colors
+                                            .white), // White text for contrast
                                   ),
                                 ),
                               ],
                             ),
                           );
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.favorite,
-                          color: Colors.deepOrange,
+                          color: Theme.of(context).primaryColor,
                           size: 30.0,
                         ),
                       ),
