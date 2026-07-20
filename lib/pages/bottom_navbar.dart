@@ -64,7 +64,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
         ),
       ),
-      body: _bodyWidgets[_selectedIndex],
+      body: SafeArea(child: _bodyWidgets[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[100],
         items: const [

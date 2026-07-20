@@ -11,8 +11,13 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    final List<FoodItem> favorites =
-        foods.where((food) => food.isFavorite).toList();
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+
+    final size = MediaQuery.sizeOf(context);
+    final List<FoodItem> favorites = foods
+        .where((food) => food.isFavorite)
+        .toList();
 
     return favorites.isEmpty
         ? Center(
@@ -20,13 +25,13 @@ class _FavoritePageState extends State<FavoritePage> {
               children: [
                 Image.asset(
                   'assets/images/empty_state.png',
-                  width: MediaQuery.sizeOf(context).width * 0.65,
+                  width: isLandscape ? size.width * 0.2 : size.width * 0.65,
                 ),
                 Text(
                   'No favorite items yet!',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: Colors.black,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge!.copyWith(color: Colors.black),
                 ),
               ],
             ),
@@ -46,7 +51,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     children: [
                       Image.network(
                         favorites[favIndex].imgUrl,
-                        width: MediaQuery.sizeOf(context).width * 0.2,
+                        width: isLandscape ? size.width * 0.08 : size.width * 0.18,
                       ),
                       const SizedBox(width: 8.0),
                       Expanded(
@@ -56,23 +61,18 @@ class _FavoritePageState extends State<FavoritePage> {
                           children: [
                             Text(
                               favorites[favIndex].name,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              style: Theme.of(context).textTheme.titleMedium!
+                                  .copyWith(fontWeight: FontWeight.bold),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
                               '\$ ${favorites[favIndex].price}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
+                              style: Theme.of(context).textTheme.titleSmall!
                                   .copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: Theme.of(context).primaryColor),
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
                             ),
                           ],
                         ),
@@ -85,12 +85,13 @@ class _FavoritePageState extends State<FavoritePage> {
                               backgroundColor: Colors.grey[100],
                               title: const Text('Remove from favorite?'),
                               content: const Text(
-                                  'Are you sure you want to remove this item from favorite?'),
+                                'Are you sure you want to remove this item from favorite?',
+                              ),
                               actions: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.grey[
-                                        300], // Light grey for Cancel button
+                                    backgroundColor: Colors
+                                        .grey[300], // Light grey for Cancel button
                                   ),
                                   onPressed: () {
                                     Navigator.pop(context);
@@ -98,32 +99,31 @@ class _FavoritePageState extends State<FavoritePage> {
                                   child: const Text(
                                     'Cancel',
                                     style: TextStyle(
-                                        color: Colors
-                                            .black), // Black text for visibility
+                                      color: Colors.black,
+                                    ), // Black text for visibility
                                   ),
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Theme.of(context)
-                                        .primaryColor, // Red for Remove button
+                                    backgroundColor: Theme.of(
+                                      context,
+                                    ).primaryColor, // Red for Remove button
                                   ),
                                   onPressed: () {
                                     final targetItem = favorites[favIndex];
                                     final foodIndex = foods.indexOf(targetItem);
-                                    setState(
-                                      () {
-                                        foods[foodIndex] = foods[foodIndex]
-                                            .copyWith(isFavorite: false);
-                                        favorites.removeAt(favIndex);
-                                      },
-                                    );
+                                    setState(() {
+                                      foods[foodIndex] = foods[foodIndex]
+                                          .copyWith(isFavorite: false);
+                                      favorites.removeAt(favIndex);
+                                    });
                                     Navigator.pop(context);
                                   },
                                   child: const Text(
                                     'Remove',
                                     style: TextStyle(
-                                        color: Colors
-                                            .white), // White text for contrast
+                                      color: Colors.white,
+                                    ), // White text for contrast
                                   ),
                                 ),
                               ],
