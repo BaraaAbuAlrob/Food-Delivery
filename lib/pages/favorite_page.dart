@@ -62,6 +62,8 @@ class _FavoritePageState extends State<FavoritePage> {
                                   .copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             Text(
                               '\$ ${favorites[favIndex].price}',
