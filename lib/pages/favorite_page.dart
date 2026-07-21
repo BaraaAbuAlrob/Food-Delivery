@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
 
@@ -9,6 +13,128 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
+  VoidCallback unFavoriteButtonPress({
+    required List<FoodItem> favorites,
+    required int favIndex,
+  }) {
+    return () {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.grey[100],
+          title: const Text('Remove from favorite?'),
+          content: const Text(
+            'Are you sure you want to remove this item from favorite?',
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey[300],
+                // Light grey for Cancel button
+                foregroundColor: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                // Red for Remove button
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                final targetItem = favorites[favIndex];
+                final foodIndex = foods.indexOf(targetItem);
+                setState(() {
+                  foods[foodIndex] = foods[foodIndex].copyWith(
+                    isFavorite: false,
+                  );
+                  favorites.removeAt(favIndex);
+                });
+                Navigator.pop(context);
+              },
+              child: const Text('Remove'),
+            ),
+          ],
+        ),
+      );
+    };
+  }
+
+  Widget responsiveFavoriteIconButton({
+    required List<FoodItem> favorites,
+    required int favIndex,
+    required FoodItem targetItem,
+  }) {
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+
+    if (isLandscape) {
+      return (!kIsWeb && Platform.isAndroid)
+          ? TextButton.icon(
+              icon: Icon(
+                Icons.favorite,
+                color: Theme.of(context).primaryColor,
+                size: 30.0,
+              ),
+              onPressed: () => unFavoriteButtonPress(
+                favIndex: favIndex,
+                favorites: favorites,
+              ),
+              label: Text(
+                'Loved',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+            )
+          : CupertinoButton(
+              onPressed: unFavoriteButtonPress(
+                favIndex: favIndex,
+                favorites: favorites,
+              ),
+              child: Row(
+                spacing: 8,
+                children: [
+                  Icon(
+                    CupertinoIcons.heart_fill,
+                    color: Theme.of(context).primaryColor,
+                    size: 30.0,
+                  ),
+                  Text(
+                    "Loved",
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
+                ],
+              ),
+            );
+    } else {
+      return (!kIsWeb && Platform.isAndroid)
+          ? IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: Theme.of(context).primaryColor,
+                size: 30.0,
+              ),
+              onPressed: unFavoriteButtonPress(
+                favIndex: favIndex,
+                favorites: favorites,
+              ),
+            )
+          : IconButton(
+              icon: Icon(
+                CupertinoIcons.heart_fill,
+                color: Theme.of(context).primaryColor,
+                size: 30.0,
+              ),
+              onPressed: unFavoriteButtonPress(
+                favIndex: favIndex,
+                favorites: favorites,
+              ),
+            );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isLandscape =
@@ -51,7 +177,9 @@ class _FavoritePageState extends State<FavoritePage> {
                     children: [
                       Image.network(
                         favorites[favIndex].imgUrl,
-                        width: isLandscape ? size.width * 0.08 : size.width * 0.18,
+                        width: isLandscape
+                            ? size.width * 0.08
+                            : size.width * 0.18,
                       ),
                       const SizedBox(width: 8.0),
                       Expanded(
@@ -77,64 +205,10 @@ class _FavoritePageState extends State<FavoritePage> {
                           ],
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              backgroundColor: Colors.grey[100],
-                              title: const Text('Remove from favorite?'),
-                              content: const Text(
-                                'Are you sure you want to remove this item from favorite?',
-                              ),
-                              actions: [
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors
-                                        .grey[300], // Light grey for Cancel button
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Cancel',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ), // Black text for visibility
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Theme.of(
-                                      context,
-                                    ).primaryColor, // Red for Remove button
-                                  ),
-                                  onPressed: () {
-                                    final targetItem = favorites[favIndex];
-                                    final foodIndex = foods.indexOf(targetItem);
-                                    setState(() {
-                                      foods[foodIndex] = foods[foodIndex]
-                                          .copyWith(isFavorite: false);
-                                      favorites.removeAt(favIndex);
-                                    });
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Remove',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ), // White text for contrast
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        icon: Icon(
-                          Icons.favorite,
-                          color: Theme.of(context).primaryColor,
-                          size: 30.0,
-                        ),
+                      responsiveFavoriteIconButton(
+                        favIndex: favIndex,
+                        favorites: favorites,
+                        targetItem: favorites[favIndex],
                       ),
                     ],
                   ),
