@@ -1,8 +1,6 @@
 // dart
-import 'dart:io';
 
 // Flutter
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Other Packages
@@ -36,10 +34,6 @@ class HomePage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: size.height * 0.037),
-            if (!kIsWeb && Platform.isIOS) const Text('IS an IOS device...'),
-            if (!kIsWeb && Platform.isAndroid) const Text('IS an Android device...'),
-            if (kIsWeb) const Text('IS a Web browser...'),
             SizedBox(height: size.height * 0.037),
             GridView.builder(
               shrinkWrap: true,

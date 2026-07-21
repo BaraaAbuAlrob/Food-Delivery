@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -40,13 +44,25 @@ class AccountPage extends StatelessWidget {
     required String title,
     required IconData icon,
     String? subTitle,
-  }) => ListTile(
-    leading: Icon(icon, size: 30.0),
-    title: Text(title),
-    subtitle: subTitle != null ? Text(subTitle) : null,
-    onTap: () => debugPrint('$title tapped!'),
-    trailing: const Icon(Icons.chevron_right, size: 30.0),
-  );
+  }) => !kIsWeb && Platform.isAndroid
+      ? ListTile(
+          leading: Icon(icon, size: 30.0),
+          title: Text(title),
+          subtitle: subTitle != null ? Text(subTitle) : null,
+          onTap: () => debugPrint('$title tapped!'),
+          trailing: const Icon(Icons.chevron_right, size: 30.0),
+        )
+      : CupertinoListTile(
+          leading: Icon(icon, size: 30.0, color: Colors.deepOrange),
+          title: Text(title),
+          subtitle: subTitle != null ? Text(subTitle) : null,
+          onTap: () => debugPrint('$title tapped!'),
+          trailing: const Icon(
+            CupertinoIcons.chevron_right,
+            size: 30.0,
+            color: Colors.deepOrange,
+          ),
+        );
 
   Widget accountPhoto({required double height, required double width}) =>
       Container(
