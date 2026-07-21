@@ -79,7 +79,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 color: Theme.of(context).primaryColor,
                 size: 30.0,
               ),
-              onPressed: () => unFavoriteButtonPress(
+              onPressed: unFavoriteButtonPress(
                 favIndex: favIndex,
                 favorites: favorites,
               ),
