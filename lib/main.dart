@@ -1,4 +1,7 @@
+import 'package:device_preview/device_preview.dart';
+
 import 'package:flutter/material.dart';
+
 // import 'package:flutter/services.dart';
 import 'package:food_delivery/pages/bottom_navbar.dart';
 
@@ -11,7 +14,7 @@ void main() {
   //   DeviceOrientation.portraitUp,
   //   DeviceOrientation.portraitDown,
   // ]);
-  runApp(const MyApp());
+  runApp(DevicePreview(builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

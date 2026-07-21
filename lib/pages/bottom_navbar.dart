@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/account_page.dart';
 import 'package:food_delivery/pages/favorite_page.dart';
@@ -19,19 +23,47 @@ class _BottomNavBarState extends State<BottomNavBar> {
     AccountPage(),
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
+  PreferredSizeWidget? appBar(){
+
+    if (kIsWeb) {
+      return AppBar(
         centerTitle: true,
         title: const Text(
-          'Foodak',
+          'Foodak in Web',
           style: TextStyle(
             fontFamily: 'Times New Roman',
           ),
         ),
-      ),
+      );
+    }
+    if(Platform.isAndroid) {
+      return AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Foodak in Android',
+          style: TextStyle(
+            fontFamily: 'Times New Roman',
+          ),
+        ),
+      );
+    } else if (Platform.isIOS){
+      return CupertinoNavigationBar(
+        middle: const Text(
+          'Foodak in IOS',
+          style: TextStyle(
+            fontFamily: 'Times New Roman',
+          ),
+        ),
+      );
+    }
+    return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: appBar(),
       drawer: Drawer(
         child: ListView(
           padding:
