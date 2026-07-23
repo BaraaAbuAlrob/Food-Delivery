@@ -14,8 +14,26 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BottomNavBarState extends State<BottomNavBar> with WidgetsBindingObserver {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    debugPrint(state.toString());
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   final List<Widget> _bodyWidgets = const [
     HomePage(),
@@ -23,36 +41,29 @@ class _BottomNavBarState extends State<BottomNavBar> {
     AccountPage(),
   ];
 
-  PreferredSizeWidget? appBar(){
-
+  PreferredSizeWidget? appBar() {
     if (kIsWeb) {
       return AppBar(
         centerTitle: true,
         title: const Text(
           'Foodak in Web',
-          style: TextStyle(
-            fontFamily: 'Times New Roman',
-          ),
+          style: TextStyle(fontFamily: 'Times New Roman'),
         ),
       );
     }
-    if(Platform.isAndroid) {
+    if (Platform.isAndroid) {
       return AppBar(
         centerTitle: true,
         title: const Text(
           'Foodak in Android',
-          style: TextStyle(
-            fontFamily: 'Times New Roman',
-          ),
+          style: TextStyle(fontFamily: 'Times New Roman'),
         ),
       );
-    } else if (Platform.isIOS){
+    } else if (Platform.isIOS) {
       return CupertinoNavigationBar(
         middle: const Text(
           'Foodak in IOS',
-          style: TextStyle(
-            fontFamily: 'Times New Roman',
-          ),
+          style: TextStyle(fontFamily: 'Times New Roman'),
         ),
       );
     }
@@ -66,29 +77,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
       appBar: appBar(),
       drawer: Drawer(
         child: ListView(
-          padding:
-              EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.15),
+          padding: EdgeInsets.only(
+            top: MediaQuery.sizeOf(context).height * 0.15,
+          ),
           children: <Widget>[
             ListTile(
-              title: const Text(
-                'Home',
-              ),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text(
-                'About',
-              ),
+              title: const Text('About'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text(
-                'Contact',
-              ),
+              title: const Text('Contact'),
               onTap: () {
                 Navigator.pop(context);
               },
