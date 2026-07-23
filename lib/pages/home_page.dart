@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: size.height * 0.037),
             GridView.builder(
               shrinkWrap: true,
-              itemCount: foods.length,
+              itemCount: food.length,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isLandscape ? 5 : 2,

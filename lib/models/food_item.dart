@@ -25,7 +25,7 @@ class FoodItem {
       );
 }
 
-List<FoodItem> foods = [
+List<FoodItem> food = [
   FoodItem(
     name: 'Cheese Burger',
     imgUrl:

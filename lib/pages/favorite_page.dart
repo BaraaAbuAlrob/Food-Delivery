@@ -46,9 +46,9 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
               onPressed: () {
                 final targetItem = favorites[favIndex];
-                final foodIndex = foods.indexOf(targetItem);
+                final foodIndex = food.indexOf(targetItem);
                 setState(() {
-                  foods[foodIndex] = foods[foodIndex].copyWith(
+                  food[foodIndex] = food[foodIndex].copyWith(
                     isFavorite: false,
                   );
                   favorites.removeAt(favIndex);
@@ -141,7 +141,7 @@ class _FavoritePageState extends State<FavoritePage> {
         MediaQuery.orientationOf(context) == Orientation.landscape;
 
     final size = MediaQuery.sizeOf(context);
-    final List<FoodItem> favorites = foods
+    final List<FoodItem> favorites = food
         .where((food) => food.isFavorite)
         .toList();
 
