@@ -37,7 +37,7 @@ class _BottomNavBarState extends State<BottomNavBar> with WidgetsBindingObserver
 
   final List<Widget> _bodyWidgets = const [
     HomePage(),
-    FavoritePage(),
+    FavoritesPage(),
     AccountPage(),
   ];
 
