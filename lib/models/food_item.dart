@@ -16,74 +16,73 @@ class FoodItem {
     String? imgUrl,
     double? price,
     bool? isFavorite,
-  }) =>
-      FoodItem(
-        name: name ?? this.name,
-        imgUrl: imgUrl ?? this.imgUrl,
-        price: price ?? this.price,
-        isFavorite: isFavorite ?? this.isFavorite,
-      );
+  }) => FoodItem(
+    name: name ?? this.name,
+    imgUrl: imgUrl ?? this.imgUrl,
+    price: price ?? this.price,
+    isFavorite: isFavorite ?? this.isFavorite,
+  );
 }
 
 List<FoodItem> food = [
   FoodItem(
     name: 'Cheese Burger',
     imgUrl:
-        'https://th.bing.com/th/id/OIP.5Ijx_Rto-QHZT9IHvYnqRQHaE8?w=2700&h=1800&rs=1&pid=ImgDetMain',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4135.png',
     price: 5.99,
   ),
   FoodItem(
     name: 'Fries',
     imgUrl:
-        'https://static.vecteezy.com/system/resources/previews/007/871/894/non_2x/french-fries-on-white-background-photo.jpg',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/fries/fries_PNG15.png',
     price: 2.99,
   ),
   FoodItem(
     name: 'Hot Dog',
     imgUrl:
-        'https://www.pngall.com/wp-content/uploads/2016/04/Hot-Dog-PNG-File.png',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/hot_dog/hot_dog_PNG10214.png',
     price: 3.99,
   ),
   FoodItem(
     name: 'Pizza',
     imgUrl:
-        'https://brickovenclemmons.com/wp-content/uploads/2023/05/Pizza-face-left.png',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/pizza/pizza_PNG43991.png',
     price: 7.99,
   ),
   FoodItem(
     name: 'Popcorn',
     imgUrl:
-        'https://th.bing.com/th/id/OIP.HXIyJK7oZgPy6e11bh2-0QHaHa?w=1200&h=1200&rs=1&pid=ImgDetMain',
+        'https://png.pngtree.com/png-clipart/20231108/original/pngtree-glass-bowl-full-of-popcorn-png-image_13517950.png',
     price: 4.99,
   ),
   FoodItem(
     name: 'Soda',
     imgUrl:
-        'https://th.bing.com/th/id/OIP.ikrB_CKJ9VbZllrLmerQVAHaHa?w=1920&h=1920&rs=1&pid=ImgDetMain',
+        'https://png.pngtree.com/png-vector/20250516/ourmid/pngtree-a-clear-glass-filled-with-dark-soda-and-ice-cubes-glistening-png-image_16296058.png',
     price: 1.99,
   ),
   FoodItem(
     name: 'Taco',
     imgUrl:
-        'https://th.bing.com/th/id/OIP.Bt5P5jQC7xehCxxfhXH13QHaGm?rs=1&pid=ImgDetMain',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/kebab/kebab_PNG45.png',
     price: 6.99,
   ),
   FoodItem(
     name: 'Wings',
     imgUrl:
-        'https://th.bing.com/th/id/R.427aec5b0c05112c75119cd4f0d3fe74?rik=l%2fu0kYbSGoUdFw&pid=ImgRaw&r=0',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/fried_chicken/fried_chicken_PNG14104.png',
     price: 8.99,
   ),
   FoodItem(
     name: 'Fish',
     imgUrl:
-        'https://i.pinimg.com/originals/77/64/6d/77646d93722edd490ade3ce0b38df9ff.png',
+        'https://static.vecteezy.com/system/resources/previews/058/443/102/non_2x/roasted-fish-plate-lemon-garnish-parsley-free-png.png',
     price: 14.99,
   ),
   FoodItem(
     name: 'Pasta',
     imgUrl:
-        'https://static.vecteezy.com/system/resources/previews/021/344/437/original/pasta-isolated-on-a-transparent-background-png.png',
+        'https://images.weserv.nl/?url=pngimg.com/uploads/pasta/pasta_PNG75.png',
     price: 14.99,
   ),
 ];

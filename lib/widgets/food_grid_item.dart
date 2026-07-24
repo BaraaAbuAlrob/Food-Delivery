@@ -27,6 +27,15 @@ class FoodGridItem extends StatelessWidget {
                       child: Image.network(
                         food[foodIndex].imgUrl,
                         fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Center(
+                            child: Icon(
+                              Icons.broken_image_rounded,
+                              color: Colors.grey,
+                              size: 40,
+                            ),
+                          );
+                        },
                       ),
                     ),
                     Align(

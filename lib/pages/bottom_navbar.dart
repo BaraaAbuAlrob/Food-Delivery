@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/account_page.dart';
 import 'package:food_delivery/pages/favorite_page.dart';
@@ -14,7 +14,8 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> with WidgetsBindingObserver {
+class _BottomNavBarState extends State<BottomNavBar>
+    with WidgetsBindingObserver {
   int _selectedIndex = 0;
 
   @override
@@ -41,40 +42,30 @@ class _BottomNavBarState extends State<BottomNavBar> with WidgetsBindingObserver
     AccountPage(),
   ];
 
-  PreferredSizeWidget? appBar() {
-    if (kIsWeb) {
-      return AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Foodak in Web',
+  PreferredSizeWidget? _buildAppBar() {
+    final isIOS = !kIsWeb && Platform.isIOS;
+    if (isIOS) {
+      return const CupertinoNavigationBar(
+        middle: Text(
+          'Foodak',
           style: TextStyle(fontFamily: 'Times New Roman'),
         ),
       );
     }
-    if (Platform.isAndroid) {
-      return AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Foodak in Android',
-          style: TextStyle(fontFamily: 'Times New Roman'),
-        ),
-      );
-    } else if (Platform.isIOS) {
-      return CupertinoNavigationBar(
-        middle: const Text(
-          'Foodak in IOS',
-          style: TextStyle(fontFamily: 'Times New Roman'),
-        ),
-      );
-    }
-    return null;
+    return AppBar(
+      centerTitle: true,
+      title: const Text(
+        'Foodak',
+        style: TextStyle(fontFamily: 'Times New Roman'),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: appBar(),
+      appBar: _buildAppBar(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.only(
@@ -83,21 +74,15 @@ class _BottomNavBarState extends State<BottomNavBar> with WidgetsBindingObserver
           children: <Widget>[
             ListTile(
               title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => Navigator.pop(context),
             ),
             ListTile(
               title: const Text('About'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => Navigator.pop(context),
             ),
             ListTile(
               title: const Text('Contact'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => Navigator.pop(context),
             ),
           ],
         ),
