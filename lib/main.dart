@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 //  import 'package:flutter/services.dart';
 import 'package:food_delivery/pages/bottom_navbar.dart';
 
@@ -12,7 +16,11 @@ void main() {
   //   DeviceOrientation.portraitUp,
   //   DeviceOrientation.portraitDown,
   // ]);
-  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  runApp(
+    (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
+        ? const MyApp()
+        : DevicePreview(enabled: true, builder: (context) => const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
