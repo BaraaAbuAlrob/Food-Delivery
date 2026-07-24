@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 import 'package:food_delivery/widgets/adaptive_fav_button.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -144,7 +145,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
           final item = favoriteFood[index];
           return InkWell(
             onTap: () {
-              debugPrint(item.name);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      FoodDetailsPage(foodItem: favoriteFood[index]),
+                ),
+              );
             },
             child: Card(
               margin: EdgeInsets.symmetric(
