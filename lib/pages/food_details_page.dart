@@ -20,12 +20,7 @@ class FoodDetailsPage extends StatelessWidget {
           children: [
             TopBanner(foodIndex: foodIndex),
             Padding(
-              padding: const EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                top: 16.0,
-                bottom: 46.0,
-              ),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -88,35 +83,39 @@ class FoodDetailsPage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  const SizedBox(height: 32.0),
-                  Row(
-                    children: [
-                      Text(
-                        '\$ ${food[foodIndex].price}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium!
-                            .copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(width: 46.0),
-                      Expanded(
-                        child: SizedBox(
-                          height: size.height * 0.058,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text('Checkout'),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          child: Row(
+            children: [
+              Text(
+                '\$ ${food[foodIndex].price}',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium!
+                    .copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: 46.0),
+              Expanded(
+                child: SizedBox(
+                  height: size.height * 0.058,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Checkout'),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
