@@ -7,6 +7,7 @@ import 'package:food_delivery/widgets/food_details/property_item.dart';
 
 class FoodDetailsPage extends StatelessWidget {
   final int foodIndex;
+
   const FoodDetailsPage({super.key, required this.foodIndex});
 
   @override
@@ -46,7 +47,7 @@ class FoodDetailsPage extends StatelessWidget {
                     flexibleSpace: FlexibleSpaceBar(
                       background: DecoratedBox(
                         decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.15),
+                          color: Colors.grey.withValues(alpha: 0.15),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 24.0),
