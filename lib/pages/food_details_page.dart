@@ -30,6 +30,7 @@ class FoodDetailsPage extends StatelessWidget {
                       child: CustomBackButton(
                         width: size.width * 0.09,
                         height: size.height * 0.04,
+                        onTap: () => Navigator.of(context).pop(food[foodIndex].name),
                       ),
                     ),
                     actions: [
