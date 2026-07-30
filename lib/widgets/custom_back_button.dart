@@ -20,7 +20,7 @@ class CustomBackButton extends StatelessWidget {
     return CustomSecondaryButton(
       width: width,
       height: height,
-      onTap: () => onTap,
+      onTap: onTap,
       iconData:
       (!kIsWeb && Platform.isIOS) ? Icons.arrow_back_ios_new_rounded : Icons.arrow_back,
     );

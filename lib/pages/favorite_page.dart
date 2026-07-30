@@ -146,12 +146,15 @@ class _FavoritesPageState extends State<FavoritesPage> {
           final realIndex = food.indexOf(item);
           return InkWell(
             onTap: () {
-              Navigator.push(
+              Navigator.push<String>(
                 context,
                 MaterialPageRoute(
                   builder: (context) => FoodDetailsPage(foodIndex: realIndex),
                 ),
-              ).then((_) => setState(() {}));
+              ).then((value) {
+                setState(() {});
+                debugPrint('The value returned in favorites page: $value');
+              });
             },
             child: Card(
               margin: EdgeInsets.symmetric(

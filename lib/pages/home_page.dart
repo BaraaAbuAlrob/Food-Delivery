@@ -53,12 +53,15 @@ class _HomePageState extends State<HomePage> {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.push<String>(
                     context,
                     MaterialPageRoute(
                       builder: (context) => FoodDetailsPage(foodIndex: index),
                     ),
-                  ).then((value) => setState(() {}));
+                  ).then((value) {
+                    setState(() {});
+                    debugPrint('The value returned in home: $value');
+                  });
                 },
                 child: FoodGridItem(foodIndex: index),
               ),
