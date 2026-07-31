@@ -150,9 +150,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               Navigator.pushNamed(
                 context,
                 FoodDetailsPage.routeName,
-                arguments: {
-                  FoodDetailsArgs(foodIndex: targetedIndex),
-                }
+                arguments: FoodDetailsArgs(foodIndex: targetedIndex),
               ).then((value) {
                 setState(() {});
                 debugPrint('The value returned in favorites page: $value');
