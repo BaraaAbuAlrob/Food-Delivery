@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 //  import 'package:flutter/services.dart';
 import 'package:food_delivery/pages/bottom_navbar.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 
 void main() {
   // // Ensure Flutter is fully initialized before calling platform-specific APIs.
@@ -44,7 +45,10 @@ class MyApp extends StatelessWidget {
         listTileTheme: const ListTileThemeData(iconColor: Colors.deepOrange),
         dividerTheme: const DividerThemeData(indent: 16.0, endIndent: 16.0),
       ),
-      home: const BottomNavBar(),
+      routes: {
+        '/': (context) => const BottomNavBar(),
+        '/food-details': (context) => const FoodDetailsPage(),
+      },
     );
   }
 }
