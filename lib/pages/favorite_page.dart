@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 import 'package:food_delivery/ui_models/food_details_args.dart';
 import 'package:food_delivery/widgets/adaptive_fav_button.dart';
 
@@ -148,7 +149,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               int targetedIndex = food.indexOf(favoriteFood[index]);
               Navigator.pushNamed(
                 context,
-                '/food-details',
+                FoodDetailsPage.routeName,
                 arguments: {
                   FoodDetailsArgs(foodIndex: targetedIndex),
                 }

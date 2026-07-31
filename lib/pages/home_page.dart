@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 // Internal Files
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 import 'package:food_delivery/widgets/food_grid_item.dart';
 
 import 'package:food_delivery/ui_models/food_details_args.dart';
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.pushNamed(
                     context,
-                    '/food-details',
+                    FoodDetailsPage.routeName,
                     arguments: FoodDetailsArgs(foodIndex: index),
                   ).then((value) {
                     setState(() {});
