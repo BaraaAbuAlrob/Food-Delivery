@@ -9,7 +9,7 @@ class AppAssets {
   static const String fishIcon = 'assets/images/categories/fish.png';
   static const String wingsIcon = 'assets/images/categories/wings.png';
   static const String tacoIcon = 'assets/images/categories/taco.png';
-  static const String appetizersIcon = 'assets/images/categories/appetizers.png';
+  static const String snacksIcon = 'assets/images/categories/snacks.png';
   static const String burgerBanner = 'assets/images/classic_burger.jpg';
 
   // account
