@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // Internal Files
 import 'package:food_delivery/models/food_item.dart';
 import 'package:food_delivery/pages/food_details_page.dart';
+import 'package:food_delivery/utilities/app_assets.dart';
 import 'package:food_delivery/widgets/food_grid_item.dart';
 
 import 'package:food_delivery/ui_models/food_details_args.dart';
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(24.0),
               child: Image(
-                image: const AssetImage('assets/images/classic_burger.jpg'),
+                image: const AssetImage(AppAssets.burgerBanner),
                 height: isLandscape ? size.height * 0.5 : size.height * 0.23,
                 width: isLandscape ? size.width * 0.6 : size.width,
                 fit: BoxFit.cover,

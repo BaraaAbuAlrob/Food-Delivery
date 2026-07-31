@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/utilities/app_assets.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -71,7 +72,7 @@ class AccountPage extends StatelessWidget {
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage('assets/images/mommy.jpg'),
+            image: AssetImage(AppAssets.profilePhoto),
             fit: BoxFit.cover,
           ),
         ),

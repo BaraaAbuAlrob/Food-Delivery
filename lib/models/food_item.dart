@@ -52,13 +52,13 @@ List<FoodItem> food = [
   FoodItem(
     name: 'Popcorn',
     imgUrl:
-        'https://png.pngtree.com/png-clipart/20231108/original/pngtree-glass-bowl-full-of-popcorn-png-image_13517950.png',
+        'https://static.vecteezy.com/system/resources/previews/038/280/636/original/ai-generated-fresh-and-delicious-butter-popcorn-isolated-on-transparent-background-free-png.png',
     price: 4.99,
   ),
   FoodItem(
     name: 'Soda',
     imgUrl:
-        'https://png.pngtree.com/png-vector/20250516/ourmid/pngtree-a-clear-glass-filled-with-dark-soda-and-ice-cubes-glistening-png-image_16296058.png',
+        'https://static.vecteezy.com/system/resources/previews/046/613/308/non_2x/glass-with-cola-and-ice-on-transparent-background-free-png.png',
     price: 1.99,
   ),
   FoodItem(
